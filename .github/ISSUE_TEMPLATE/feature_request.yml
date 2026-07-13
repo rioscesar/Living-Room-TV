@@ -1,0 +1,24 @@
+name: Feature request
+description: Propose a focused product improvement.
+title: "[Feature]: "
+labels: [enhancement]
+body:
+  - type: textarea
+    id: need
+    attributes:
+      label: User need
+      description: Describe the observed problem before proposing architecture.
+    validations:
+      required: true
+  - type: textarea
+    id: evidence
+    attributes:
+      label: Evidence and context
+      description: Explain the environment, frequency, and current workaround.
+    validations:
+      required: true
+  - type: textarea
+    id: constraints
+    attributes:
+      label: Product constraints
+      description: Note controller, navigation, local-first, privacy, or helper implications.

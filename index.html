@@ -1,0 +1,64 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Living Room TV</title>
+  <link rel="stylesheet" href="style.css" />
+  <script>
+    window.showLivingRoomTvSafeMode = function () {
+      document.documentElement.classList.add("safe-mode");
+      var message = document.getElementById("safeMode");
+      if (message) message.hidden = false;
+    };
+
+    window.addEventListener("error", function () {
+      window.showLivingRoomTvSafeMode();
+    });
+  </script>
+</head>
+<body>
+  <main class="tv-shell" aria-label="Living Room TV home">
+    <header class="top-bar">
+      <div>
+        <h1>Living Room TV</h1>
+        <p id="today" class="today">Welcome</p>
+      </div>
+      <time id="clock" class="clock">--:--</time>
+    </header>
+
+    <section class="hero" aria-label="Featured">
+      <div class="hero-atmosphere" aria-hidden="true">
+        <span class="hero-beam hero-beam-one"></span>
+        <span class="hero-beam hero-beam-two"></span>
+      </div>
+      <div class="hero-copy">
+        <p id="heroKicker" class="hero-kicker">Home</p>
+        <h2 id="heroTitle">What would you like to watch?</h2>
+        <p id="heroSubtitle">Choose an app below and settle in.</p>
+      </div>
+      <div id="heroRecents" class="hero-recents" hidden></div>
+      <div class="hero-art" aria-hidden="true">
+        <div id="heroMark" class="hero-mark">TV</div>
+      </div>
+    </section>
+
+    <section id="safeMode" class="safe-mode-panel" hidden>
+      <h2>Living Room TV needs a quick refresh.</h2>
+      <p>The home screen could not load its app list. Restart the browser or check the app configuration.</p>
+    </section>
+
+    <noscript>
+      <section class="safe-mode-panel">
+        <h2>Living Room TV needs JavaScript enabled.</h2>
+        <p>Turn JavaScript back on to use the TV home screen.</p>
+      </section>
+    </noscript>
+
+    <div id="rows" class="rows" aria-live="polite"></div>
+  </main>
+
+  <script src="favorites.local.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
