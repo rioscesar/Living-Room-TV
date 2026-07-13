@@ -4,12 +4,19 @@ All notable changes are recorded here. The project has not published a release.
 
 ## Unreleased
 
+### Public positioning and automatic startup
+
+- Positioned Living Room TV as a local-first, controller-first Smart TV interface focused on everyday household entertainment.
+- Added reversible current-user automatic startup through an owned Startup-folder shortcut and fixed Chrome/Chromium wrapper.
+- Added isolated tests for idempotency, path quoting, uninstall isolation, browser detection, fixed fullscreen arguments, and prohibited machine-wide behavior.
+- Documented GitHub Issues as the current public reporting route without presenting it as private or confidential.
+
 ### Release-blocker remediation
 
 - Replaced personal-address-specific scanner data with generic checks and synthetic controls, including split-string reconstruction coverage.
 - Moved authorization for Sleep, Restart, and Shutdown into a native helper confirmation dialog with Cancel/No as the default.
 - Added isolated helper tests for cancellation, confirmation, noninteractive failure, raw protocol invocation, unknown actions, and injection-shaped input without executing power actions.
-- Recreated private `main` as a sanitized root history after explicit approval; private vulnerability reporting, physical validation, public visibility, and release publication remain pending human action.
+- Recreated private `main` as a sanitized root history after explicit approval; later owner validation confirmed the physical release checks, email privacy settings, and visibility/release approvals.
 
 ### Public-readiness candidate
 

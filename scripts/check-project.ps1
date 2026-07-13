@@ -1,9 +1,12 @@
 [CmdletBinding()]
 param(
-  [string]$ProjectRoot = (Split-Path -Parent $PSScriptRoot)
+  [string]$ProjectRoot
 )
 
 $ErrorActionPreference = "Stop"
+if ([string]::IsNullOrWhiteSpace($ProjectRoot)) {
+  $ProjectRoot = Split-Path -Parent $PSScriptRoot
+}
 
 function Assert-ProjectContract {
   param(
@@ -53,7 +56,12 @@ $requiredPaths = @(
   "docs/CHANGELOG.md",
   "docs/RELEASES.md",
   "scripts/livingroomtv-helper.ps1",
+  "scripts/start-living-room-tv.ps1",
+  "scripts/install-autostart.ps1",
+  "scripts/uninstall-autostart.ps1",
+  "scripts/test-autostart.ps1",
   "tests/helper-security.tests.ps1",
+  "tests/autostart.tests.ps1",
   ".github/workflows/validate.yml",
   "docs/RELEASE-CHECKLIST.md"
 )

@@ -1,18 +1,17 @@
 # Roadmap
 
-## Current: Public Open-Source Release Readiness
+## Current: Public Positioning and Per-User Automatic Startup
 
-- Establish a clean privacy and history boundary.
-- Publish standalone setup, architecture, security, support, and contribution guidance.
-- Enforce project and public-readiness contracts in Windows CI.
-- Validate a clean clone and prepare, but do not publish, `v0.1.0-beta.1`.
+- Position Living Room TV as a streaming-first, controller-first Smart TV interface for ordinary household use.
+- Add reversible current-user automatic startup without changing automatic login, Steam startup, or other profiles.
+- Validate startup registration and fixed launch behavior through isolated Windows tests.
 
-## Next: Physical Release Qualification
+## Next: Automatic Startup Qualification and Beta Publication
 
-- Complete Chrome F11, Xbox Bluetooth, Steam Desktop Layout, and helper validation on the target media PC.
-- Complete physical 4K TV and couch-distance review.
-- Test a second-user setup and document reproducible sensitivity guidance.
-- Add a privacy-reviewed clean screenshot.
+- Install autostart from the intended Windows profile and complete a real sign-out/sign-in test.
+- Confirm the launcher opens once, reaches fullscreen, and gains controller input when Steam is ready.
+- Confirm a second Windows profile is unaffected, then uninstall and validate the next sign-in.
+- After merge and owner action, verify public visibility and publish the approved `v0.1.0-beta.1` candidate.
 
 ## Future
 
@@ -20,4 +19,4 @@
 - Improve configuration ergonomics without weakening the private Favorites boundary.
 - Expand helper actions only when a concrete need and safe fixed implementation are demonstrated.
 
-Visibility changes and releases always require explicit maintainer approval.
+Visibility and `v0.1.0-beta.1` publication were approved on 2026-07-13 but remain unexecuted until the implementation is merged and final checks pass.

@@ -16,7 +16,7 @@ Unacceptable behavior includes sexualized language or imagery, trolling or insul
 
 Project maintainers are responsible for clarifying and enforcing these standards and may remove, edit, or reject contributions or participation that is not aligned with this Code of Conduct.
 
-Report conduct concerns privately to the repository owner through the GitHub account profile. Reports will be reviewed promptly and kept confidential to the extent practical. Maintainers who do not follow this policy may be removed from enforcement responsibilities.
+Report conduct concerns through [GitHub Issues](https://github.com/rioscesar/Living-Room-TV/issues/new/choose). Issues are public, so omit personal information and details that would expose or escalate harm. This repository does not currently provide a confidential conduct-reporting channel or promise that submitted issue content will remain private. Maintainers who do not follow this policy may be removed from enforcement responsibilities.
 
 ## Attribution
 

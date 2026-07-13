@@ -1,6 +1,6 @@
 # Screenshot Guidance
 
-No screenshot is committed for the initial public-readiness candidate because the available development views may contain personal recent history or local Favorites.
+Screenshots are optional documentation and are not a release requirement. No screenshot is committed for the initial candidate because development views may contain personal recent history or local Favorites.
 
 Before adding a screenshot:
 

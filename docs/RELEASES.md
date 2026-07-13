@@ -1,9 +1,9 @@
 # Release Candidate
 
-## v0.1.0-beta.1 — Prepared, Not Published
+## v0.1.0-beta.1 — Approved, Not Published
 
-This candidate represents the first externally reviewable baseline: a framework-free Windows TV launcher with deterministic navigation, Steam-owned controller translation, private local Favorites, and an optional fixed-action helper.
+This candidate represents the first externally reviewable baseline: a framework-free Windows Smart TV interface with deterministic navigation, Steam-owned controller translation, private local Favorites, an optional fixed-action helper, and reversible per-user automatic startup.
 
-Automated checks cover syntax, navigation, presentation contracts, helper allowlisting, synthetic PII controls, and mocked helper authorization. Sanitized private history has been recreated and verified. Laptop and desktop testing informed the controller design, but the candidate is not qualified for release until a private reporting channel is verified and the target media PC, Chrome F11, physical 4K TV, couch-distance usability, reconnect behavior, native helper dialog, and power actions complete the manual checklist.
+Automated checks cover syntax, navigation, presentation contracts, helper allowlisting, synthetic PII controls, mocked helper authorization, and isolated autostart lifecycle behavior. Sanitized history and the previously required target-PC, Chrome F11, physical 4K TV, controller reconnect, native helper dialog, and power checks are owner-confirmed. Automatic startup still requires a real sign-in test on the intended profile, a second-profile isolation check, and an uninstall sign-in check.
 
-No tag, GitHub release, or public visibility change is implied by this document.
+The owner approved public visibility and `v0.1.0-beta.1` publication on 2026-07-13. No tag, GitHub release, or visibility change is performed by this implementation PR; those actions wait for reviewed code on `main`.

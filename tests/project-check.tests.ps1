@@ -24,6 +24,7 @@ function Assert-ControlFails {
 & (Join-Path $ProjectRoot "scripts/check-public-readiness.ps1") -ProjectRoot $ProjectRoot
 & (Join-Path $ProjectRoot "tests/public-readiness.tests.ps1")
 & (Join-Path $ProjectRoot "tests/helper-security.tests.ps1")
+& (Join-Path $ProjectRoot "tests/autostart.tests.ps1")
 
 & node --test (Join-Path $ProjectRoot "tests/navigation.test.js")
 if ($LASTEXITCODE -ne 0) {
