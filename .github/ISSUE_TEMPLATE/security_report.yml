@@ -1,0 +1,35 @@
+name: Security report
+description: Report a security concern using public, sanitized information only
+title: "[Security] "
+labels:
+  - bug
+body:
+  - type: markdown
+    attributes:
+      value: |
+        GitHub Issues are public. Do not include credentials, personal information,
+        private URLs, browser data, exploit payloads, or other details that are
+        unsafe to disclose. If necessary, submit only a minimal summary requesting
+        additional coordination.
+  - type: input
+    id: revision
+    attributes:
+      label: Affected revision
+      description: Commit, tag, or version affected by the concern.
+      placeholder: commit or version
+    validations:
+      required: true
+  - type: textarea
+    id: summary
+    attributes:
+      label: Sanitized summary
+      description: Explain the impact without including sensitive or unsafe details.
+    validations:
+      required: true
+  - type: checkboxes
+    id: public-confirmation
+    attributes:
+      label: Public disclosure check
+      options:
+        - label: I confirm this report contains only information safe to publish in a public GitHub issue.
+          required: true

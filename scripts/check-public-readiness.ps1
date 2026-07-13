@@ -1,10 +1,13 @@
 [CmdletBinding()]
 param(
-  [string]$ProjectRoot = (Split-Path -Parent $PSScriptRoot),
+  [string]$ProjectRoot,
   [switch]$SkipRun
 )
 
 $ErrorActionPreference = "Stop"
+if ([string]::IsNullOrWhiteSpace($ProjectRoot)) {
+  $ProjectRoot = Split-Path -Parent $PSScriptRoot
+}
 
 function Assert-NoSensitiveText {
   param([Parameter(Mandatory)] [string]$Text)
@@ -38,7 +41,8 @@ function Assert-PublicReadinessContract {
     ".github/workflows/validate.yml", ".github/pull_request_template.md",
     ".github/ISSUE_TEMPLATE/config.yml",
     ".github/ISSUE_TEMPLATE/bug_report.yml",
-    ".github/ISSUE_TEMPLATE/feature_request.yml"
+    ".github/ISSUE_TEMPLATE/feature_request.yml",
+    ".github/ISSUE_TEMPLATE/security_report.yml"
   )
 
   foreach ($path in $required) {
@@ -60,7 +64,7 @@ function Assert-PublicReadinessContract {
     "Windows user profile path" = '(?i)C:\\Users\\'
     "private workspace path" = '(?i)(?:^|[^A-Za-z])D:\\'
     "private storage reference" = '(?i)OneDrive'
-    "private audience wording" = '(?i)\b(?:wife|spouse|household)\b'
+    "spouse-specific audience wording" = '(?i)\b(?:wife|husband|spouse|girlfriend|boyfriend)\b'
     "GitHub classic token" = 'ghp_[A-Za-z0-9]{20,}'
     "GitHub fine-grained token" = 'github_pat_[A-Za-z0-9_]+'
     "AWS access key" = 'AKIA[0-9A-Z]{16}'
@@ -94,7 +98,8 @@ function Assert-PublicReadinessContract {
 
   $readme = $Files["README.md"]
   $readmeRequirements = @(
-    "## Quick Start", "## Controller Setup", "## Private Favorites",
+    "Turn your Windows PC into a Smart TV.", "## Quick Start",
+    "## Automatic Startup for One Windows User", "## Controller Setup", "## Private Favorites",
     "## Optional Windows Helper", "## Security Model", "## Current Limitations",
     "## Troubleshooting", "## Development", "## License and Responsible Use",
     "D-pad", "Left stick", "Right stick", "Right trigger", "View button",

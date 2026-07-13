@@ -34,6 +34,7 @@ $goodFiles["README.md"] = @'
 ## Quick Start
 ## Controller Setup
 ## Private Favorites
+## Automatic Startup for One Windows User
 ## Optional Windows Helper
 ## Security Model
 ## Current Limitations
@@ -42,19 +43,28 @@ $goodFiles["README.md"] = @'
 ## License and Responsible Use
 D-pad Left stick Right stick Right trigger View button
 Product and service names are trademarks
+Turn your Windows PC into a Smart TV.
 '@
 $goodFiles["favorites.local.example.js"] = 'url: "https://example.com"'
 $goodFiles[".github/workflows/validate.yml"] = @'
 runs-on: windows-latest
 uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683
 '@
+$goodFiles[".github/ISSUE_TEMPLATE/security_report.yml"] = 'name: Security report'
 $goodFiles["scripts/livingroomtv-helper.ps1"] = @'
 $allowed = @{ "ping" = {}; "ea" = {}; "sleep" = {}; "restart" = {}; "shutdown" = {} }
 '@
 $goodFiles["app.js"] = 'const inputOwner = "keyboard";'
+$goodFiles["README.md"] += "`nDesigned for ordinary household use."
 
 Assert-PublicReadinessContract -Files $goodFiles -TrackedPaths @("README.md", "app.js")
 Write-Host "PASS: public-readiness negative control accepted known-good content."
+
+Assert-PublicControlFails -Name "spouse-specific audience wording" -Control {
+  $broken = $goodFiles.Clone()
+  $broken["README.md"] = 'Designed specifically for my wife.'
+  Assert-PublicReadinessContract -Files $broken -TrackedPaths @("README.md")
+}
 
 Assert-PublicControlFails -Name "direct synthetic email" -Control {
   $broken = $goodFiles.Clone()

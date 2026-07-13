@@ -1,12 +1,16 @@
 # Living Room TV
 
-Living Room TV is a local-first, controller-oriented home screen for a Windows PC connected to a television. It turns a browser tab into a calm launcher for streaming sites, Steam Big Picture, and a small set of optional local actions.
+Turn your Windows PC into a Smart TV.
 
-The project is a framework-free HTML, CSS, and JavaScript application. It has no backend, cloud account, package manager, or runtime dependency beyond a modern browser.
+Living Room TV is a local-first, controller-first Smart TV interface for Windows PCs. It transforms a desktop connected to a television into a simple, premium entertainment experience for the whole household.
+
+Unlike traditional game launchers, Living Room TV is designed for everyday entertainment—streaming, web browsing, gaming, and system control—from the couch using only an Xbox controller. It supports games, but it is streaming- and household-first rather than a game-library manager.
+
+The launcher shell is framework-free HTML, CSS, and JavaScript. It has no backend, accounts, telemetry, advertising, cloud dependency, package manager, or build step. Steam Desktop Layout remains the controller translation layer.
 
 ## Preview
 
-The interface uses a compact contextual hero, horizontal app rails, clear focus depth, and initials as temporary app identities. A repository screenshot is intentionally not included until a clean public configuration can be captured. See [docs/SCREENSHOTS.md](docs/SCREENSHOTS.md) for the capture checklist.
+The interface uses a compact contextual hero, horizontal app rails, clear focus depth, and initials as temporary app identities. A screenshot is optional and is not required for the initial beta. See [docs/SCREENSHOTS.md](docs/SCREENSHOTS.md) before contributing one.
 
 ## What It Does
 
@@ -20,6 +24,10 @@ The interface uses a compact contextual hero, horizontal app rails, clear focus 
 ## Who It Is For
 
 Living Room TV is for people using a Windows media PC from a shared living-room screen who want a simpler launch surface than the Windows desktop. A maintainer can edit the app list without changing layout code.
+
+## Origin
+
+Living Room TV began as a way to make a Windows desktop connected to a television feel natural for the whole family. Existing launchers largely focused on games; this project focuses on everyday living-room entertainment.
 
 ## Requirements
 
@@ -40,6 +48,40 @@ No framework, package manager, build step, backend, database, hosted service, or
 4. Use arrow keys and Enter, or configure Steam Input as described below.
 
 The application loads directly from disk. If Chrome restricts a feature in a local-file context, serve the repository with any static web server; the product itself still has no server-side component.
+
+## Automatic Startup for One Windows User
+
+Living Room TV can open automatically when the current Windows user signs in. Run the installer while signed into the Windows profile that should receive the TV experience:
+
+```powershell
+powershell -ExecutionPolicy Bypass -File .\scripts\install-autostart.ps1
+```
+
+Verify the current-user registration, browser detection, path quoting, and launch plan without opening a browser:
+
+```powershell
+powershell -ExecutionPolicy Bypass -File .\scripts\test-autostart.ps1
+```
+
+Optionally open the launcher once for a non-destructive manual check:
+
+```powershell
+powershell -ExecutionPolicy Bypass -File .\scripts\test-autostart.ps1 -Launch
+```
+
+Remove only the Living Room TV startup entry:
+
+```powershell
+powershell -ExecutionPolicy Bypass -File .\scripts\uninstall-autostart.ps1
+```
+
+The installer creates one shortcut in the current user's Startup folder. It does not require administrator rights, enable Windows automatic login, alter another Windows profile, or modify Steam startup. It is idempotent and refuses to overwrite an unrelated shortcut with the same name.
+
+The startup wrapper derives the repository location, finds Chrome or Chromium from documented registry and installation locations, and opens `index.html` in a new window with Chrome's `--start-fullscreen` behavior. It retains the user's normal browser profile and does not use kiosk or app mode. Steam should already be configured to start minimized. The launcher does not wait for or reconfigure Steam; if Steam is still starting, the page opens and the local startup log notes that controller translation may not be ready yet.
+
+Startup diagnostics are stored at `%LOCALAPPDATA%\LivingRoomTV\startup.log`. The log records timestamps, local detected paths, Steam readiness, the launch attempt, and failures; it does not inspect or record Favorites, browsing history, credentials, or browser-profile data.
+
+To bypass automatic startup, disable **Living Room TV** under Windows **Settings → Apps → Startup** or run the uninstaller. Close the Living Room TV browser window to return to the normal desktop; it will not reopen until the next sign-in or manual launch. Re-run the installer to restore automatic startup.
 
 ## Controller Setup
 
@@ -131,6 +173,7 @@ Review [SECURITY.md](SECURITY.md) before installing the helper. Only install cod
 - Some streaming sites may resist keyboard focus or open their own overlays.
 - The helper is Windows-only and EA discovery checks only known install locations.
 - Full physical 4K TV, couch-distance, reconnect, and multi-account testing remains manual.
+- Per-user sign-in startup, single-window behavior, and cross-profile isolation require a real Windows sign-out/sign-in test after installation.
 - Initials are temporary visual identities; branded assets are deferred.
 
 ## Troubleshooting
@@ -142,6 +185,9 @@ Review [SECURITY.md](SECURITY.md) before installing the helper. Only install cod
 - **Helper action does nothing:** run `scripts/test-helper.ps1`, then inspect `%LOCALAPPDATA%\LivingRoomTV\helper.log`.
 - **EA is not found:** update only the fixed candidate paths in `scripts/livingroomtv-helper.ps1`.
 - **Private Favorites are missing:** confirm `favorites.local.js` is next to `index.html` and loads before `app.js`.
+- **Automatic startup is missing:** run `scripts/test-autostart.ps1` from the intended Windows profile and confirm the reported shortcut and wrapper paths.
+- **Startup opens without controller input:** confirm Steam is configured separately to start minimized; inspect `%LOCALAPPDATA%\LivingRoomTV\startup.log` for the Steam readiness note.
+- **Startup opens more than once:** run the idempotent installer again and confirm `scripts/test-autostart.ps1` reports one matching shortcut.
 
 ## Development
 
@@ -159,7 +205,7 @@ The current beta candidate is documented in [STATE.md](STATE.md). Planned work a
 
 ## Contributing and Support
 
-Contributions are welcome. Start with [CONTRIBUTING.md](CONTRIBUTING.md). Use [SUPPORT.md](SUPPORT.md) for help and [SECURITY.md](SECURITY.md) for private vulnerability reporting. Participation is governed by [CODE_OF_CONDUCT.md](CODE_OF_CONDUCT.md).
+Contributions are welcome. Start with [CONTRIBUTING.md](CONTRIBUTING.md). Use [SUPPORT.md](SUPPORT.md) for help and [SECURITY.md](SECURITY.md) for the current public GitHub Issues security-reporting policy. Participation is governed by [CODE_OF_CONDUCT.md](CODE_OF_CONDUCT.md).
 
 ## License and Responsible Use
 
