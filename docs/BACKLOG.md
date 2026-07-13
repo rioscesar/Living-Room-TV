@@ -2,7 +2,6 @@
 
 ## Release Blockers
 
-- Obtain explicit approval for the prepared history-sanitation and repository-recreation plan, then verify every published ref from a clean clone.
 - Establish and verify a functioning private vulnerability-reporting channel.
 - Pass the complete physical checklist in `docs/RELEASE-CHECKLIST.md` on the target media PC and 4K display.
 - Confirm GitHub email privacy and command-line push protection settings.

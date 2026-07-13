@@ -31,3 +31,5 @@ Brand assets require a dedicated licensing and maintenance strategy and will be 
 Before a public release, reachable history must be free of personal email addresses, secrets, private destinations, and machine-specific data. Public-readiness checks supplement, but do not replace, staged-diff and history review.
 
 Public-readiness controls use synthetic fixtures. They detect direct email values and split-string reconstruction without storing the private value that motivated the control.
+
+On 2026-07-13, the private repository was recreated from the verified remediation tree as a new root history. Old branches, pull-request refs, and original-history commits remain only in private recovery backups and were not migrated.

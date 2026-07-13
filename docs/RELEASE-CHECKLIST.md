@@ -4,10 +4,10 @@ Candidate: `v0.1.0-beta.1` (not published)
 
 ## Repository Boundary
 
-- [ ] Full reachable history contains no secrets, personal email addresses, personal paths, or private bookmarks.
+- [x] Full reachable history contains no secrets, personal email addresses, personal paths, or private bookmarks.
 - [x] `favorites.local.js`, logs, status files, credentials, and environment files are untracked in the remediation tree.
 - [x] Public-readiness controls use synthetic fixtures and detect direct and split-string email values.
-- [ ] Sanitized history and repository refs are recreated after explicit approval.
+- [x] Sanitized history and repository refs are recreated after explicit approval.
 - [ ] GitHub email privacy and command-line push protection are enabled for maintainers.
 - [ ] A functioning private vulnerability-reporting channel is verified.
 - [ ] Repository visibility change is separately approved.

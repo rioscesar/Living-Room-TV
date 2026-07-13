@@ -9,7 +9,7 @@ All notable changes are recorded here. The project has not published a release.
 - Replaced personal-address-specific scanner data with generic checks and synthetic controls, including split-string reconstruction coverage.
 - Moved authorization for Sleep, Restart, and Shutdown into a native helper confirmation dialog with Cancel/No as the default.
 - Added isolated helper tests for cancellation, confirmation, noninteractive failure, raw protocol invocation, unknown actions, and injection-shaped input without executing power actions.
-- Kept repository recreation, private vulnerability reporting, physical validation, public visibility, and release publication pending explicit human action.
+- Recreated private `main` as a sanitized root history after explicit approval; private vulnerability reporting, physical validation, public visibility, and release publication remain pending human action.
 
 ### Public-readiness candidate
 
