@@ -10,6 +10,7 @@ const DASHBOARD_CONFIG = {
       items: [
         { title: "YouTube", subtitle: "Videos and live streams", initials: "YT", accent: "#d91f26", action: { type: "url", url: "https://www.youtube.com" } },
         { title: "Prime Video", subtitle: "Movies and shows", initials: "PV", accent: "#0578ff", action: { type: "url", url: "https://www.primevideo.com" } },
+        { title: "Apple TV", subtitle: "Original series and movies", initials: "ATV", accent: "#d1d5db", action: { type: "url", url: "https://tv.apple.com" } },
         { title: "Hulu", subtitle: "Shows, movies, live TV", initials: "H", accent: "#1ce783", action: { type: "url", url: "https://www.hulu.com" } },
         { title: "Peacock", subtitle: "Series, sports, movies", initials: "P", accent: "#7c3aed", action: { type: "url", url: "https://www.peacocktv.com" } },
         { title: "Tubi", subtitle: "Free movies and shows", initials: "T", accent: "#f97316", action: { type: "url", url: "https://tubitv.com" } },
